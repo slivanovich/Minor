@@ -33,5 +33,4 @@ inline void console(const std::vector<std::pair<const std::string, const std::st
         throw std::runtime_error(message);                                                            \
     }
 
-
-#endif // UTILITIES_HPP
+#endif  // UTILITIES_HPP
