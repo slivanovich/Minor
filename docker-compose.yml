@@ -18,6 +18,7 @@ services:
 
   server:
     container_name: minor_server
+    image: minor_server
     platform: linux/amd64
     build: .
     ports:
