@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get install -y cmake build-essential libpqxx-dev
+RUN apt update
+RUN apt install -y cmake build-essential libpqxx-dev
 
 WORKDIR /minor_server
 
