@@ -5,6 +5,7 @@ RUN apt install -y cmake build-essential libpqxx-dev
 
 WORKDIR /minor_server
 
+COPY ./CMakeLists.txt ./CMakeLists.txt
 COPY ./source ./source
 COPY ./include ./include
 
