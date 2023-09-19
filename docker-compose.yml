@@ -16,7 +16,7 @@ services:
   #     - server_network
   #   restart: unless-stopped
 
-  server:
+  minor_server:
     container_name: minor_server
     image: minor_server
     platform: linux/amd64
