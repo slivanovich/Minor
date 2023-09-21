@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.21)
+project(minor_client)
+
+set(CMAKE_CXX_STANDARD 17)
+
+if (APPLE)
+    message(STATUS ">>> Apple detected")
+    include_directories(include)
+    include_directories(../include)
+    # link_directories(${CMAKE_SOURCE_DIR}/lib)
+    # file(GLOB LIBRARIES "${CMAKE_SOURCE_DIR}/lib/macos/*.dylib")
+elseif (UNIX AND NOT APPLE)
+    message(STATUS ">>> Ubuntu detected")
+    include_directories(include)
+    include_directories(../include)
+else ()
+    message(FATAL_ERROR "Not support this system")
+endif ()
+
+add_executable(minor_client source/main.cpp)
+target_link_libraries(minor_client ${LIBRARIES})

@@ -1,6 +1,7 @@
 # Ignored files
 .vscode/*
-cmake/build/*
+server_source/cmake/build/*
+client_source/cmake/build/*
 
 # Prerequisites
 *.d
