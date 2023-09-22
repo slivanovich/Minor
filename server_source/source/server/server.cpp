@@ -1,6 +1,18 @@
 #include "server.hpp"
 
 namespace Minor {
+void ServerHandler::splitRequest(const std::string &request, std::vector<std::string> &data) {
+    const char splitter = ' ';
+    size_t index = 0;
+    std::string elem = "";
+    while (index < request.size()) {
+        if (request[index] == splitter)
+            data.push_back(elem), elem = "";
+        elem += request[index];
+    }
+    std::reverse(data.begin(), data.end());
+}
+
 ServerHandler::ServerHandler() {
 }
 

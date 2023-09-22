@@ -8,7 +8,9 @@ void ServerHandler::onMessage(
 ) {
     serverHandler->threads.emplace_back([serverHandler, connection, message]() {
         const std::string &request = message->get_payload();
-        connection->send(request);
+        std::vector<std::string> data;
+        serverHandler->splitRequest(request, data);
+        serverHandler->requestHandler->onRequest(data);
     });
     serverHandler->threads.back().detach();
 }

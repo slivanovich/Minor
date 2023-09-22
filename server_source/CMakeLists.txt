@@ -18,7 +18,21 @@ else ()
     message(FATAL_ERROR "Not support this system")
 endif ()
 
+file(GLOB request_handler_source "source/request_handler/*.cpp")
+file(GLOB user_source "source/user/*.cpp")
+file(GLOB accounting_source "source/request_handler/accounting/*.cpp")
+file(GLOB accounting_database_source "source/request_handler/accounting/database/*.cpp")
 file(GLOB server_source "source/server/*.cpp")
 
-add_executable(minor_server source/main.cpp ${server_source})
+add_executable(minor_server
+    source/main.cpp
+    ${request_handler_source}
+
+    ${user_source}
+
+    ${accounting_source}
+    ${accounting_database_source}
+
+    ${server_source}
+)
 target_link_libraries(minor_server ${LIBRARIES})

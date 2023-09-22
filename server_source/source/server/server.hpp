@@ -2,6 +2,7 @@
 #define SERVER_HPP
 
 #include "../def.hpp"
+#include "../request_handler/request_handler.hpp"
 
 namespace Minor {
 class ServerHandler {
@@ -10,10 +11,13 @@ class ServerHandler {
     std::unordered_map<std::string, std::vector<Server::connection_ptr>> connections;
     std::vector<std::thread> threads;
 
+    std::unique_ptr<RequestHandler> requestHandler;
+
     static void onMessage(ServerHandler *serverHandler, Server::connection_ptr &connection, const Server::message_ptr &message);
     static void onOpenConnection(ServerHandler *serverHandler, const Server::connection_ptr &connection);
     static void onCloseConnection(ServerHandler *serverHandler, const Server::connection_ptr &connection);
 
+    void splitRequest(const std::string &request, std::vector<std::string> &data);
 
 public:
     explicit ServerHandler();
